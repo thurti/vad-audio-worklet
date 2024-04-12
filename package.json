@@ -1,6 +1,6 @@
 {
   "name": "vad-audio-worklet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Voice activity detection (VAD) AudioWorklet.",
   "browser": "src/vad-audio-worklet.js",
   "files": [
