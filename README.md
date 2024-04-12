@@ -2,12 +2,14 @@
 
 AudioWorklet implementation of the vad algorithm from _Moattar, Mohammad & Homayoonpoor, Mahdi_ .
 
-Example: https://thurti.github.io/vad-audio-worklet/example/index.html
+Example: https://thurti.github.io/vad-audio-worklet/example/index.html  
 Full Example: https://thurti.github.io/vad-audio-worklet/example/index-full.html
 
 ## Install
 
-Copy the files in `/src` to your public folder. When using `npm install` you need to copy the files from `node_modules` into your project directory. ES6 module import wouldn't work.
+Copy the files in `/src` to your public folder.
+
+When using `npm install` you need to copy the files from `node_modules` into your project directory. ES6 module import wouldn't work.
 
 ```
 npm install @thurti/vad-audio-worklet
@@ -61,5 +63,5 @@ https://www.researchgate.net/publication/255667085_A_simple_but_efficient_real-t
 
 ## Example File
 
-`examples/alert.ogg`
+`example/alert.ogg`
 <a href="https://commons.wikimedia.org/wiki/File:03_ALBERT_EINSTEIN.ogg">Radio Universidad Nacional de La Plata</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons
