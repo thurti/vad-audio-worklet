@@ -1,0 +1,30 @@
+{
+  "name": "@thurti/vad-audio-worklet",
+  "version": "0.1.0",
+  "description": "Voice activity detection (VAD) AudioWorklet.",
+  "main": "src/vad-audio-worklet.js",
+  "scripts": {
+    "fft.js-add-export": "node ./scripts/fft.js-add-export.js",
+    "postinstall": "npm run fft.js-add-export"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thurti/vad-audio-worklet.git"
+  },
+  "keywords": [
+    "vad",
+    "audioworklet",
+    "audprocessor",
+    "voice",
+    "speech"
+  ],
+  "author": "Thomas Hurtig",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thurti/vad-audio-worklet/issues"
+  },
+  "homepage": "https://github.com/thurti/vad-audio-worklet#readme",
+  "devDependencies": {
+    "fft.js": "^4.0.4"
+  }
+}
