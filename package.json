@@ -1,14 +1,13 @@
 {
   "name": "vad-audio-worklet",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Voice activity detection (VAD) AudioWorklet.",
   "browser": "src/vad-audio-worklet.js",
   "files": [
     "src"
   ],
   "scripts": {
-    "fft.js-add-export": "node ./scripts/fft.js-add-export.js",
-    "postinstall": "npm run fft.js-add-export"
+    "fft.js-add-export": "node ./scripts/fft.js-add-export.js"
   },
   "repository": {
     "type": "git",
