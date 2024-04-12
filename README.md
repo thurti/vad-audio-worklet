@@ -7,7 +7,10 @@ AudioWorklet implementation of the vad algorithm from _Moattar, Mohammad & Homay
 
 ## Install
 
-Copy the files in `/src` to your public folder.
+Copy the files from `/src` to your public folder.
+
+`src/vad-audio-worklet.js`  
+`src/fft.js`
 
 When using `npm install` you need to copy the files from `node_modules` into your project directory. ES6 module import wouldn't work.
 
