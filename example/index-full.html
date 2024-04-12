@@ -13,7 +13,7 @@
         audio?.pause();
         audio = null;
 
-        audio = new Audio("/example/albert.ogg");
+        audio = new Audio("./albert.ogg");
         await audio.play();
         const stream = audio.captureStream
           ? audio.captureStream()
@@ -58,7 +58,9 @@
 
         console.log("audio context sample rate", audioContext.sampleRate);
 
-        await audioContext.audioWorklet.addModule("/src/vad-audio-worklet.js");
+        await audioContext.audioWorklet.addModule(
+          "../src/vad-audio-worklet.js"
+        );
         source = audioContext.createMediaStreamSource(stream);
 
         const vad = new AudioWorkletNode(audioContext, "vad", {
