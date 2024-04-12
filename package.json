@@ -1,8 +1,11 @@
 {
-  "name": "@thurti/vad-audio-worklet",
+  "name": "vad-audio-worklet",
   "version": "0.1.0",
   "description": "Voice activity detection (VAD) AudioWorklet.",
-  "main": "src/vad-audio-worklet.js",
+  "browser": "src/vad-audio-worklet.js",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "fft.js-add-export": "node ./scripts/fft.js-add-export.js",
     "postinstall": "npm run fft.js-add-export"
@@ -24,7 +27,24 @@
     "url": "https://github.com/thurti/vad-audio-worklet/issues"
   },
   "homepage": "https://github.com/thurti/vad-audio-worklet#readme",
+  "funding": [
+    {
+      "type": "Github",
+      "url": "https://github.com/sponsors/thurti"
+    },
+    {
+      "type": "Ko-fi",
+      "url": "https://ko-fi.com/thurti"
+    },
+    {
+      "type": "Buy Me A Coffee",
+      "url": "https://buymeacoffee.com/thurti"
+    }
+  ],
   "devDependencies": {
     "fft.js": "^4.0.4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

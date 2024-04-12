@@ -12,7 +12,7 @@ Copy the files in `/src` to your public folder.
 When using `npm install` you need to copy the files from `node_modules` into your project directory. ES6 module import wouldn't work.
 
 ```
-npm install @thurti/vad-audio-worklet
+npm install vad-audio-worklet
 ```
 
 ## Usage
