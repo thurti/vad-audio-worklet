@@ -5,6 +5,12 @@ AudioWorklet implementation of the vad algorithm from _Moattar, Mohammad & Homay
 [Example Mic/File](https://thurti.github.io/vad-audio-worklet/example/index.html)  
 [Full Example with Debug Data](https://thurti.github.io/vad-audio-worklet/example/index-full.html)
 
+### Reference
+
+Moattar, Mohammad & Homayoonpoor, Mahdi. (2010). A simple but efficient real-time voice activity detection algorithm. European Signal Processing Conference.
+
+https://www.researchgate.net/publication/255667085_A_simple_but_efficient_real-time_voice_activity_detection_algorithm
+
 ## Install
 
 Copy the files from `/src` to your public folder.
@@ -57,12 +63,6 @@ vad.port.onmessage = (event) => {
   }
 };
 ```
-
-## Reference
-
-Moattar, Mohammad & Homayoonpoor, Mahdi. (2010). A simple but efficient real-time voice activity detection algorithm. European Signal Processing Conference.
-
-https://www.researchgate.net/publication/255667085_A_simple_but_efficient_real-time_voice_activity_detection_algorithm
 
 ## Example File
 
