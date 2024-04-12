@@ -2,7 +2,8 @@
 
 AudioWorklet implementation of the vad algorithm from _Moattar, Mohammad & Homayoonpoor, Mahdi_ .
 
-Complete example https://thurti.github.io/vad-audio-worklet/example
+Example: https://thurti.github.io/vad-audio-worklet/example/index.html
+Full Example: https://thurti.github.io/vad-audio-worklet/example/index-full.html
 
 ## Install
 

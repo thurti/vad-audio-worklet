@@ -3,13 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VAD Audio Worklet Example</title>
+    <title>VAD Audio Worklet Full Example</title>
   </head>
   <body>
     <script type="module">
       let audio, source;
 
-      // just for testing with fake stream from audio
       async function streamAudio() {
         audio?.pause();
         audio = null;
@@ -23,7 +22,6 @@
         vad(stream, 128, 44100);
       }
 
-      // get audio from microphone
       async function streamMic() {
         navigator.mediaDevices
           .getUserMedia({
@@ -47,7 +45,7 @@
       async function vad(stream, fftSize, sampleRate = 48000) {
         console.log("samplrate", sampleRate);
 
-        // check if firefox, because firefox can't change sample rate
+        // check if firefox, because it can't change sample rate
         let audioContext;
         const isFirefox =
           navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
@@ -58,6 +56,8 @@
           audioContext = new AudioContext({ sampleRate });
         }
 
+        console.log("audio context sample rate", audioContext.sampleRate);
+
         await audioContext.audioWorklet.addModule("/src/vad-audio-worklet.js");
         source = audioContext.createMediaStreamSource(stream);
 
@@ -66,14 +66,39 @@
           processorOptions: {
             fftSize,
             sampleRate,
+            debug: true,
           },
         });
         source.connect(vad);
 
+        // plot vad features
         const speech = document.querySelector(".speech");
+        const sfm = document.querySelector(".sfm").getContext("2d");
+        const f = document.querySelector(".f").getContext("2d");
+        const e = document.querySelector(".e").getContext("2d");
+        const signal = document.querySelector(".signal").getContext("2d");
+
+        // clear plot data
+        sfm.clearRect(0, 0, 10000, 200);
+        f.clearRect(0, 0, 10000, 200);
+        e.clearRect(0, 0, 10000, 200);
+        signal.clearRect(0, 0, 10000, 200);
+
+        function addDataPoint(x, data, element, mult, mark = false) {
+          if (mark) {
+            element.fillStyle = "lightgreen";
+          } else {
+            element.fillStyle = "gray";
+          }
+          element.fillRect(count, 0, 1, data * mult);
+        }
+
+        let count = 1;
+        let isSpeech = false;
 
         vad.port.onmessage = (event) => {
           const cmd = event.data["cmd"];
+          const data = event.data.data;
 
           if (cmd === "silence") {
             speech.textContent = "Silence";
@@ -84,6 +109,26 @@
             speech.textContent = "Speech";
             speech.style.backgroundColor = "lightgreen";
           }
+
+          if (cmd === "test") {
+            console.log(data);
+          }
+
+          if (cmd === "speech" || (cmd !== "silence" && isSpeech)) {
+            isSpeech = true;
+          }
+
+          if (cmd === "silence") {
+            isSpeech = false;
+          }
+
+          addDataPoint(count, data["plot"], signal, 100, isSpeech);
+
+          addDataPoint(count, data["sfm"], sfm, 3, data["sfm_true"]);
+          addDataPoint(count, data["f"], f, 0.05, data["f_true"]);
+          addDataPoint(count, data["e"], e, 2, data["e_true"]);
+
+          count++;
         };
       }
 
@@ -138,6 +183,37 @@
       >
         Silence
       </div>
+    </div>
+
+    <div style="max-width: 100%; overflow-y: scroll">
+      <h4>Spectral Flatness</h4>
+      <canvas
+        class="sfm"
+        height="200"
+        width="10000"
+        style="transform: scaleY(-1); border: 1px solid black"
+      ></canvas>
+      <h4>Max Frequency</h4>
+      <canvas
+        class="f"
+        height="200"
+        width="10000"
+        style="transform: scaleY(-1); border: 1px solid black"
+      ></canvas>
+      <h4>Energy</h4>
+      <canvas
+        class="e"
+        height="200"
+        width="10000"
+        style="transform: scaleY(-1); border: 1px solid black"
+      ></canvas>
+      <h4>Signal (green means "speech detected")</h4>
+      <canvas
+        class="signal"
+        height="200"
+        width="10000"
+        style="transform: scaleY(-1); border: 1px solid black"
+      ></canvas>
     </div>
   </body>
 </html>
