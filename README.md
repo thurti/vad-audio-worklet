@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/vad-audio-worklet.svg)](https://badge.fury.io/js/vad-audio-worklet)
+
 # VAD AudioWorklet
 
 AudioWorklet implementation of the vad algorithm from _Moattar, Mohammad & Homayoonpoor, Mahdi_ .
@@ -42,8 +44,8 @@ await audioContext.audioWorklet.addModule("/src/vad-audio-worklet.js");
 const vad = new AudioWorkletNode(audioContext, "vad", {
   outputChannelCount: [1],
   processorOptions: {
-    fftSize: 128,
-    sampleRate: audioContext.sampleRate,
+    sampleRate: audioContext.sampleRate, // sample rate of the audio input
+    fftSize: 128, // optional change fft size, default: 128
   },
 });
 
@@ -68,3 +70,15 @@ vad.port.onmessage = (event) => {
 
 `example/alert.ogg`
 <a href="https://commons.wikimedia.org/wiki/File:03_ALBERT_EINSTEIN.ogg">Radio Universidad Nacional de La Plata</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons
+
+## Credits
+
+**fft.js**  
+https://github.com/indutny/fft.js/
+
+**Moattar, Mohammad & Homayoonpoor, Mahdi. (2010). A simple but efficient real-time voice activity detection algorithm. European Signal Processing Conference.**  
+https://www.researchgate.net/publication/255667085_A_simple_but_efficient_real-time_voice_activity_detection_algorithm
+
+**MDN Docs: Web Audio API**  
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API  
+https://openwebdocs.org/
