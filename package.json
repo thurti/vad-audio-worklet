@@ -22,7 +22,7 @@
     "voice",
     "speech"
   ],
-  "author": "Thomas Hurtig",
+  "author": "thurti",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/thurti/vad-audio-worklet/issues"
