@@ -72,6 +72,7 @@
           },
         });
         source.connect(vad);
+        source.connect(audioContext.destination);
 
         // plot vad features
         const speech = document.querySelector(".speech");
