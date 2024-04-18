@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/vad-audio-worklet.svg)](https://badge.fury.io/js/vad-audio-worklet)
+[![NPM Version](https://img.shields.io/npm/v/vad-audio-worklet?style=flat&color=green)](https://www.npmjs.com/package/vad-audio-worklet)
 
 # VAD AudioWorklet
 
