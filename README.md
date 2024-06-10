@@ -7,6 +7,8 @@ AudioWorklet implementation of the vad algorithm from _Moattar, Mohammad & Homay
 [Example Mic/File](https://thurti.github.io/vad-audio-worklet/example/index.html)  
 [Full Example with Debug Data](https://thurti.github.io/vad-audio-worklet/example/index-full.html)
 
+> **Please Note:** This is not a full voice activity detection solution. This worklet only reports "state" changes from "silence" to "speech" and vice versa without any further processing (like smoothing). The algorithm is not state of the art either. In my tests it produced a lot of false positives, but was good enough for my use case. If you are looking for a more robust solution, have a look at https://github.com/ricky0123/vad.
+
 ### Reference
 
 Moattar, Mohammad & Homayoonpoor, Mahdi. (2010). A simple but efficient real-time voice activity detection algorithm. European Signal Processing Conference.
